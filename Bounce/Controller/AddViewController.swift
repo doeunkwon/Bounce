@@ -28,13 +28,13 @@ class AddViewController: UIViewController {
         
     }
     
-    @IBAction func timeSlide(_ sender: UISlider) {
+    @IBAction func timeSlid(_ sender: UISlider) {
         timeValue = Int(sender.value)
         timeLabel.text = "\(timeValue)h"
     }
     
-    @IBAction func daySlide(_ sender: UISlider) {
-        var dayValue = Int(sender.value)
+    @IBAction func daySlid(_ sender: UISlider) {
+        let dayValue = Int(sender.value)
         adjustDayLabel(dayValue)
     }
     

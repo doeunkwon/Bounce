@@ -9,12 +9,8 @@ import UIKit
 
 class LibraryViewController: UIViewController {
     
-    @IBOutlet weak var libraryLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        libraryLabel.text = "Library"
         
     }
     
