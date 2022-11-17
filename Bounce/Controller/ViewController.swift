@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import CoreData
 import CoreLocation
 
 class ViewController: UIViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,28 +22,40 @@ class ViewController: UIViewController {
     @IBOutlet weak var orangeButton: UIButton!
     @IBOutlet weak var redButton: UIButton!
     
+    var preferenceArray = [Preference]()
+    
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("--- \(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))")
+        // uncomment above for path to Bounce.sqlite
+        
+        loadPreference()
+        
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         
-        switch hour {
-        case 0 ... 11:
-            greetingLabel.text = "Good Morning,"
-        case 12 ... 17:
-            greetingLabel.text = "Good Afternoon,"
-        case 18 ... 23:
-            greetingLabel.text = "Good Evening,"
-        default:
-            greetingLabel.text = "Hello,"
+        if preferenceArray.count == 1 { // "if preference is set"
+            switch hour {
+            case 0 ... 11:
+                greetingLabel.text = "Good Morning,"
+            case 12 ... 17:
+                greetingLabel.text = "Good Afternoon,"
+            case 18 ... 23:
+                greetingLabel.text = "Good Evening,"
+            default:
+                greetingLabel.text = "Hello,"
+            }
+            nameLabel.text = preferenceArray[0].nickname
+        } else {
+            greetingLabel.text = "Welcome to Bounce,"
+            nameLabel.text = "👋🏼"
+            placeLabel.text = "Go get set up!"
         }
-        
-        nameLabel.text = "Doeun 🧑🏻‍💻"
         
         weatherManager.delegate = self
         locationManager.delegate = self
@@ -69,8 +84,16 @@ class ViewController: UIViewController {
         redButton.layer.shadowRadius = 3.0
         redButton.layer.shadowOffset = CGSize(width: 0, height: 1)
     }
-
-
+    
+    func loadPreference() {
+        let request : NSFetchRequest<Preference> = Preference.fetchRequest()
+        do {
+            preferenceArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
+    
 }
 
 //MARK: - WeatherManagerDelegate
@@ -85,11 +108,13 @@ extension ViewController: WeatherManagerDelegate {
         
         var condition = weather.condition
         
-        DispatchQueue.main.async {
-            if (18 ... 23).contains(hour) {
-                condition = "🌙"
+        if preferenceArray.count == 1 {
+            DispatchQueue.main.async {
+                if (18 ... 23).contains(hour) {
+                    condition = "🌙"
+                }
+                self.placeLabel.text = "\(weather.cityName) \(condition) \(weather.temperatureString)°C"
             }
-            self.placeLabel.text = "\(weather.cityName) \(condition) \(weather.temperatureString)°C"
         }
         
     }

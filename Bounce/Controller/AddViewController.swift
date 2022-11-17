@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class AddViewController: UIViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var eventTextField: UITextField!
     @IBOutlet weak var timeLabel: UILabel!
@@ -18,6 +21,7 @@ class AddViewController: UIViewController {
     
     
     var timeValue = 3
+    var dayValue = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +38,27 @@ class AddViewController: UIViewController {
     }
     
     @IBAction func daySlid(_ sender: UISlider) {
-        let dayValue = Int(sender.value)
+        dayValue = Int(sender.value)
         adjustDayLabel(dayValue)
+    }
+    
+    @IBAction func addPressed(_ sender: Any) {
+        if let eventInput = eventTextField.text {
+            if eventInput != "" {
+                let newEvent = Event(context: context)
+                newEvent.event = eventInput
+                newEvent.time = Int32(timeValue)
+                newEvent.day = Int32(dayValue)
+                save()
+                navigationController?.popViewController(animated: true)
+                dismiss(animated: true, completion: nil)
+            } else {
+                
+                let alert = UIAlertController(title: "Hold on!", message: "Please enter an event.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Sure", style: .default, handler: nil))
+                present(alert, animated: true)
+            }
+        }
     }
     
     func adjustDayLabel(_ dayValue: Int) {
@@ -48,6 +71,14 @@ class AddViewController: UIViewController {
             dayLabel.text = "late"
         default:
             dayLabel.text = "noon"
+        }
+    }
+    
+    func save() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     

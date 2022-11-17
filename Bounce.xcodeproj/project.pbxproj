@@ -19,6 +19,8 @@
 		E46090AB28E78F7200BCB5F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46090AA28E78F7200BCB5F3 /* Assets.xcassets */; };
 		E46090AE28E78F7200BCB5F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E46090AC28E78F7200BCB5F3 /* LaunchScreen.storyboard */; };
 		E46090B928E822DA00BCB5F3 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46090B828E822DA00BCB5F3 /* AddViewController.swift */; };
+		E477FC982926074800883CF4 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E477FC972926074800883CF4 /* EventCell.xib */; };
+		E477FC9A29260C2600883CF4 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477FC9929260C2600883CF4 /* EventCell.swift */; };
 		E487E3DA28E827ED0016F386 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487E3D928E827ED0016F386 /* SetViewController.swift */; };
 		E4C429E728EA38E10057CEBA /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C429E628EA38E10057CEBA /* LibraryViewController.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		E46090AD28E78F7200BCB5F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E46090AF28E78F7200BCB5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E46090B828E822DA00BCB5F3 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		E477FC972926074800883CF4 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		E477FC9929260C2600883CF4 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		E487E3D928E827ED0016F386 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		E4C429E628EA38E10057CEBA /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				E46090A428E78F7000BCB5F3 /* Main.storyboard */,
+				E477FC972926074800883CF4 /* EventCell.xib */,
+				E477FC9929260C2600883CF4 /* EventCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E477FC982926074800883CF4 /* EventCell.xib in Resources */,
 				E46090AE28E78F7200BCB5F3 /* LaunchScreen.storyboard in Resources */,
 				E46090AB28E78F7200BCB5F3 /* Assets.xcassets in Resources */,
 				E46090A628E78F7000BCB5F3 /* Main.storyboard in Resources */,
@@ -190,6 +197,7 @@
 				E487E3DA28E827ED0016F386 /* SetViewController.swift in Sources */,
 				E46090A328E78F7000BCB5F3 /* ViewController.swift in Sources */,
 				E41314A328F13FDC00AB0171 /* ScheduleViewController.swift in Sources */,
+				E477FC9A29260C2600883CF4 /* EventCell.swift in Sources */,
 				E40D74452920D4C200BA11D9 /* WeatherModel.swift in Sources */,
 				E40D74472920D4CE00BA11D9 /* WeatherData.swift in Sources */,
 				E460909F28E78F7000BCB5F3 /* AppDelegate.swift in Sources */,

@@ -6,27 +6,82 @@
 //
 
 import UIKit
+import CoreData
 
 class SetViewController: UIViewController {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var sleepLabel: UILabel!
+    @IBOutlet weak var sleepSlider: UISlider!
     @IBOutlet weak var bedLabel: UILabel!
     @IBOutlet weak var bedSlider: UISlider!
     @IBOutlet weak var setButton: UIButton!
     
+    var preferenceArray = [Preference]()
+    
+    var sleepValue = 8
     var bedValue = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadPreference()
+        
+        nicknameTextField.delegate = self
         
         let attributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 25.0)]
         
         setButton.setAttributedTitle(NSAttributedString(string: "Set", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
     }
     
+    @IBAction func sleepSlid(_ sender: UISlider) {
+        sleepValue = Int(sender.value)
+        sleepLabel.text = "\(sleepValue)h"
+    }
+    
     @IBAction func bedSlid(_ sender: UISlider) {
         bedValue = Int(sender.value)
         bedLabel.text = "\(bedValue)pm"
+    }
+    
+    @IBAction func setPressed(_ sender: Any) {
+        if let nicknameInput = nicknameTextField.text {
+            if nicknameInput != "" {
+                if preferenceArray.count == 1 { // "if preference is set"
+                    context.delete(preferenceArray[0])
+                }
+                let newPreference = Preference(context: context)
+                newPreference.nickname = nicknameInput
+                newPreference.bed = Int32(bedValue + 12)
+                newPreference.sleep = Int32(sleepValue)
+                save()
+                navigationController?.popViewController(animated: true)
+                dismiss(animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Hold on!", message: "Please enter a nickname.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Sure", style: .default, handler: nil))
+                present(alert, animated: true)
+            }
+        }
+    }
+    
+    func loadPreference() {
+        let request : NSFetchRequest<Preference> = Preference.fetchRequest()
+        do {
+            preferenceArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
+    
+    func save() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
     }
     
 }

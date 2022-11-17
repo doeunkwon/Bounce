@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusableCell" id="Gi4-G4-sl1" customClass="EventCell" customModule="Bounce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gi4-G4-sl1" id="6p8-Su-A2a">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyo-3d-WPI">
+                        <rect key="frame" x="10" y="8.6666666666666643" width="62" height="27"/>
+                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="23"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvH-mU-72h">
+                        <rect key="frame" x="340" y="12.666666666666666" width="43" height="18.666666666666671"/>
+                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="16"/>
+                        <color key="textColor" systemColor="systemGray2Color"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" name="warmWhite"/>
+                <constraints>
+                    <constraint firstItem="hvH-mU-72h" firstAttribute="centerY" secondItem="6p8-Su-A2a" secondAttribute="centerY" id="Ntf-vf-qgC"/>
+                    <constraint firstItem="Uyo-3d-WPI" firstAttribute="leading" secondItem="6p8-Su-A2a" secondAttribute="leading" constant="10" id="Zmh-cG-gL4"/>
+                    <constraint firstItem="Uyo-3d-WPI" firstAttribute="centerY" secondItem="6p8-Su-A2a" secondAttribute="centerY" id="jRO-5l-v2o"/>
+                    <constraint firstAttribute="trailing" secondItem="hvH-mU-72h" secondAttribute="trailing" constant="10" id="yO5-ip-oD4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="eventLabel" destination="Uyo-3d-WPI" id="Ekl-8z-2ih"/>
+                <outlet property="infoLabel" destination="hvH-mU-72h" id="orS-gA-RjD"/>
+            </connections>
+            <point key="canvasLocation" x="-93.89312977099236" y="-165.49295774647888"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="warmWhite">
+            <color red="0.95686274509803926" green="0.95686274509803926" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
