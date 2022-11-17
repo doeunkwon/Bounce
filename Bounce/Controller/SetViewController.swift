@@ -34,6 +34,17 @@ class SetViewController: UIViewController {
         let attributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 25.0)]
         
         setButton.setAttributedTitle(NSAttributedString(string: "Set", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
+        
+        if preferenceArray.count == 1 { // "if preference is set"
+            nicknameTextField.text = preferenceArray[0].nickname
+            sleepValue = Int(preferenceArray[0].sleep)
+            sleepSlider.value = Float(sleepValue)
+            sleepLabel.text = "\(sleepValue)h"
+            bedValue = Int(preferenceArray[0].bed - 12)
+            bedSlider.value = Float(bedValue)
+            bedLabel.text = "\(bedValue)pm"
+        }
+        
     }
     
     @IBAction func sleepSlid(_ sender: UISlider) {
@@ -57,8 +68,10 @@ class SetViewController: UIViewController {
                 newPreference.bed = Int32(bedValue + 12)
                 newPreference.sleep = Int32(sleepValue)
                 save()
-                navigationController?.popViewController(animated: true)
-                dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                }
             } else {
                 let alert = UIAlertController(title: "Hold on!", message: "Please enter a nickname.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Sure", style: .default, handler: nil))

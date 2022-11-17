@@ -27,6 +27,16 @@ class ViewController: UIViewController {
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadPreference()
+        
+        /// find a way to only call this function when nickname has been changed
+        if preferenceArray.count == 1 { // "if preference is set"
+            nameLabel.text = preferenceArray[0].nickname
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
