@@ -120,7 +120,7 @@ extension ViewController: WeatherManagerDelegate {
         
         if preferenceArray.count == 1 {
             DispatchQueue.main.async {
-                if (18 ... 23).contains(hour) {
+                if (0 ... 5).contains(hour) || (18 ... 23).contains(hour) {
                     condition = "🌙"
                 }
                 self.placeLabel.text = "\(weather.cityName) \(condition) \(weather.temperatureString)°C"
