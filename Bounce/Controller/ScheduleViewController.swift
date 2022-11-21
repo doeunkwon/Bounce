@@ -18,6 +18,7 @@ class ScheduleViewController: UIViewController {
     var preferenceArray = [Preference]()
     var scheduleArray = [Schedule]()
     
+    var startingTime = Int()
     var clock = 1
     
     override func viewDidLoad() {
@@ -34,8 +35,7 @@ class ScheduleViewController: UIViewController {
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
-        
-        var startingTime = Int()
+
         if hour == 23 {
             startingTime = 23
         } else {
@@ -67,13 +67,13 @@ class ScheduleViewController: UIViewController {
             scheduleArray = []
             save()
             
-            generateSchedule(&startingTime)
+            generateSchedule()
             addBedtime()
         }
 
     }
     
-    func generateSchedule(_ startingTime: inout Int) {
+    func generateSchedule() {
         let early = eventArray.filter { event in
             return event.day == 0
         }
@@ -88,7 +88,7 @@ class ScheduleViewController: UIViewController {
         for i in 0 ... 2 {
             var rem = 0
             if i == 0 {
-                rem += 11
+                rem += 12
             } else if i == 1{
                 rem += 6
                 clock = 12
@@ -99,14 +99,14 @@ class ScheduleViewController: UIViewController {
                     rem = Int(preferenceArray[0].bed - 18)
                 }
             }
-            updateStartingTime(&rem, &startingTime)
+            updateStartingTime(&rem)
             let phase = phaseArray[i].shuffled()
             
             for event in phase {
                 if rem <= 0 {
                     break
                 }
-                if event.time <= rem {
+                if event.time < rem {
                     rem -= Int(event.time)
                     addToSchedule(event)
                 }
@@ -114,11 +114,12 @@ class ScheduleViewController: UIViewController {
         }
     }
     
-    func updateStartingTime(_ rem: inout Int, _ startingTime: inout Int) {
+    func updateStartingTime(_ rem: inout Int) {
         if startingTime > 0 {
             clock += startingTime
+            let temp = rem
             rem -= startingTime
-            startingTime -= rem
+            startingTime -= temp
         }
     }
     

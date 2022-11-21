@@ -98,7 +98,7 @@ extension LibraryViewController: UITableViewDataSource {
             dayTime = "noon"
         }
         
-        cell.infoLabel.text = "\(eventArray[indexPath.row].time)h · \(dayTime!)"
+        cell.infoLabel.text = "\(dayTime!) · \(eventArray[indexPath.row].time)h"
         return cell
         
     }

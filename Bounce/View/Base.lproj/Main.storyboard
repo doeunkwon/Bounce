@@ -327,7 +327,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="URL-uf-e4o">
-                                <rect key="frame" x="50" y="204.5" width="314" height="642.5"/>
+                                <rect key="frame" x="50" y="204.5" width="314" height="627.5"/>
                                 <color key="backgroundColor" name="warmWhite"/>
                             </tableView>
                         </subviews>
@@ -339,7 +339,7 @@
                             <constraint firstItem="URL-uf-e4o" firstAttribute="leading" secondItem="nLI-pJ-rcp" secondAttribute="leading" constant="50" id="Cwe-FB-ipq"/>
                             <constraint firstItem="nLI-pJ-rcp" firstAttribute="trailing" secondItem="v16-eS-aI7" secondAttribute="trailing" constant="16" id="GPe-zV-KIc"/>
                             <constraint firstItem="nLI-pJ-rcp" firstAttribute="trailing" secondItem="URL-uf-e4o" secondAttribute="trailing" constant="50" id="gR9-rx-8iZ"/>
-                            <constraint firstItem="nLI-pJ-rcp" firstAttribute="bottom" secondItem="URL-uf-e4o" secondAttribute="bottom" constant="15" id="hik-Ye-DmN"/>
+                            <constraint firstItem="nLI-pJ-rcp" firstAttribute="bottom" secondItem="URL-uf-e4o" secondAttribute="bottom" constant="30" id="hik-Ye-DmN"/>
                             <constraint firstItem="v16-eS-aI7" firstAttribute="leading" secondItem="nLI-pJ-rcp" secondAttribute="leading" constant="16" id="v0K-5V-uKX"/>
                         </constraints>
                     </view>
@@ -499,7 +499,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wCr-GS-MIM">
-                                <rect key="frame" x="60" y="199.5" width="294" height="647.5"/>
+                                <rect key="frame" x="60" y="204.5" width="294" height="627.5"/>
                                 <color key="backgroundColor" name="warmWhite"/>
                             </tableView>
                         </subviews>
@@ -507,8 +507,8 @@
                         <color key="backgroundColor" name="warmWhite"/>
                         <constraints>
                             <constraint firstItem="jhC-ob-ZJ5" firstAttribute="trailing" secondItem="9SP-bd-5bJ" secondAttribute="trailing" constant="16" id="BOs-UK-jKU"/>
-                            <constraint firstItem="wCr-GS-MIM" firstAttribute="top" secondItem="9SP-bd-5bJ" secondAttribute="bottom" constant="30" id="M9T-3u-kss"/>
-                            <constraint firstItem="jhC-ob-ZJ5" firstAttribute="bottom" secondItem="wCr-GS-MIM" secondAttribute="bottom" constant="15" id="VFK-Hn-mx3"/>
+                            <constraint firstItem="wCr-GS-MIM" firstAttribute="top" secondItem="9SP-bd-5bJ" secondAttribute="bottom" constant="35" id="M9T-3u-kss"/>
+                            <constraint firstItem="jhC-ob-ZJ5" firstAttribute="bottom" secondItem="wCr-GS-MIM" secondAttribute="bottom" constant="30" id="VFK-Hn-mx3"/>
                             <constraint firstItem="jhC-ob-ZJ5" firstAttribute="trailing" secondItem="wCr-GS-MIM" secondAttribute="trailing" constant="60" id="dO5-aC-mJ7"/>
                             <constraint firstItem="9SP-bd-5bJ" firstAttribute="leading" secondItem="jhC-ob-ZJ5" secondAttribute="leading" constant="16" id="l7J-u4-N69"/>
                             <constraint firstItem="9SP-bd-5bJ" firstAttribute="top" secondItem="jhC-ob-ZJ5" secondAttribute="top" constant="25" id="uQa-0m-8Uk"/>
