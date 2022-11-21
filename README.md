@@ -1,4 +1,4 @@
 ### 🦄 Bounce
 > Coming December 2022
 
-<img width="600" src="https://user-images.githubusercontent.com/88988886/202990668-27c2edb6-544b-4299-bd53-0f6ab53ab08d.png">!
+<img width="600" src="https://user-images.githubusercontent.com/88988886/202991502-12ee43b5-f9dd-45d1-b9c3-0d7e8b7c8960.png">!
