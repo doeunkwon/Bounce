@@ -35,16 +35,15 @@ class ScheduleViewController: UIViewController {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         
-        // var startingTime = Int()
-        // if hour == 23 {
-        //     startingTime = 23
-        // } else {
-        //     startingTime = hour + 1
-        // }
+        var startingTime = Int()
+        if hour == 23 {
+            startingTime = 23
+        } else {
+            startingTime = hour + 1
+        }
         
         var newDay = true
         
-        /// checks to see if schedule already exists
         if scheduleArray.count > 0 {
             /// arbitrarily picks 1st as test
             if let originDate = scheduleArray[0].origin {
@@ -58,7 +57,7 @@ class ScheduleViewController: UIViewController {
         }
 
         /// uncomment for testing
-        // startingTime = 6
+        startingTime = 6
         newDay = true
         
         if newDay {
@@ -68,13 +67,13 @@ class ScheduleViewController: UIViewController {
             scheduleArray = []
             save()
             
-            generateSchedule()
+            generateSchedule(&startingTime)
             addBedtime()
         }
 
     }
     
-    func generateSchedule() {
+    func generateSchedule(_ startingTime: inout Int) {
         let early = eventArray.filter { event in
             return event.day == 0
         }
@@ -89,7 +88,7 @@ class ScheduleViewController: UIViewController {
         for i in 0 ... 2 {
             var rem = 0
             if i == 0 {
-                rem += 12
+                rem += 11
             } else if i == 1{
                 rem += 6
                 clock = 12
@@ -100,10 +99,11 @@ class ScheduleViewController: UIViewController {
                     rem = Int(preferenceArray[0].bed - 18)
                 }
             }
+            updateStartingTime(&rem, &startingTime)
             let phase = phaseArray[i].shuffled()
             
             for event in phase {
-                if rem == 0 {
+                if rem <= 0 {
                     break
                 }
                 if event.time <= rem {
@@ -111,6 +111,14 @@ class ScheduleViewController: UIViewController {
                     addToSchedule(event)
                 }
             }
+        }
+    }
+    
+    func updateStartingTime(_ rem: inout Int, _ startingTime: inout Int) {
+        if startingTime > 0 {
+            clock += startingTime
+            rem -= startingTime
+            startingTime -= rem
         }
     }
     

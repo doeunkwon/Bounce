@@ -40,8 +40,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /// uncomment for path to Bounce.sqlite
         print("--- \(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))")
-        // uncomment above for path to Bounce.sqlite
         
         loadPreference()
         
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         
-        if preferenceArray.count == 1 { // "if preference is set"
+        if preferenceArray.count == 1 {
             switch hour {
             case 0 ... 11:
                 greetingLabel.text = "Good Morning,"
