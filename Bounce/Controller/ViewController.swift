@@ -11,6 +11,9 @@ import CoreLocation
 class ViewController: UIViewController {
     
     let coreDataManager = CoreDataManager()
+    let styleManager = StyleManager()
+    var weatherManager = WeatherManager()
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,14 +26,11 @@ class ViewController: UIViewController {
     
     var preferenceArray = [Preference]()
     
-    var weatherManager = WeatherManager()
-    let locationManager = CLLocationManager()
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         coreDataManager.loadPreference(&preferenceArray)
         
-        /// find a way to only call this function when nickname has been changed
+        /// FIX: find a way to only call this function when nickname has been changed
         if preferenceArray.count == 1 { // "if preference is set"
             nameLabel.text = preferenceArray[0].nickname
         }
@@ -71,18 +71,10 @@ class ViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     
-        styleButton(blueButton, "Schedule")
-        styleButton(greenButton, "Add")
-        styleButton(orangeButton, "Set")
-        styleButton(redButton, "Library")
-    }
-    
-    func styleButton(_ button: UIButton, _ title: String) {
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 26.0)]
-        button.setAttributedTitle(NSAttributedString(string: title, attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
-        button.layer.shadowOpacity = 0.1
-        button.layer.shadowRadius = 3.0
-        button.layer.shadowOffset = CGSize(width: 0, height: 1)
+        styleManager.styleButton(blueButton, "Schedule")
+        styleManager.styleButton(greenButton, "Add")
+        styleManager.styleButton(orangeButton, "Set")
+        styleManager.styleButton(redButton, "Library")
     }
     
 }

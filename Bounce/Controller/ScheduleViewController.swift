@@ -28,7 +28,6 @@ class ScheduleViewController: UIViewController {
         coreDataManager.loadEvents(&eventArray)
         
         scheduleTableView.dataSource = self
-        
         scheduleTableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "reusableCell")
         
         let date = Date()
@@ -43,6 +42,7 @@ class ScheduleViewController: UIViewController {
         
         var newDay = true
         
+        /// checks to see whether or not a new schedule should be set for a new day
         if scheduleArray.count > 0 {
             /// arbitrarily picks 1st as test
             if let originDate = scheduleArray[0].origin {
@@ -56,7 +56,7 @@ class ScheduleViewController: UIViewController {
         }
 
         /// uncomment for testing
-        startingTime = 11
+        startingTime = 6
         newDay = true
         
         if newDay {
