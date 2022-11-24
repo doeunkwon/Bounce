@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import CoreData
 
 class SetViewController: UIViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let coreDataManager = CoreDataManager()
     
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var sleepLabel: UILabel!
@@ -27,7 +26,7 @@ class SetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadPreference()
+        coreDataManager.loadPreference(&preferenceArray)
         
         nicknameTextField.delegate = self
         
@@ -61,13 +60,13 @@ class SetViewController: UIViewController {
         if let nicknameInput = nicknameTextField.text {
             if nicknameInput != "" {
                 if preferenceArray.count == 1 { // "if preference is set"
-                    context.delete(preferenceArray[0])
+                    coreDataManager.delete(preferenceArray[0])
                 }
-                let newPreference = Preference(context: context)
+                let newPreference = Preference(context: coreDataManager.context)
                 newPreference.nickname = nicknameInput
                 newPreference.bed = Int32(bedValue + 12)
                 newPreference.sleep = Int32(sleepValue)
-                save()
+                coreDataManager.save()
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                     self.dismiss(animated: true, completion: nil)
@@ -77,23 +76,6 @@ class SetViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "Sure", style: .default, handler: nil))
                 present(alert, animated: true)
             }
-        }
-    }
-    
-    func loadPreference() {
-        let request : NSFetchRequest<Preference> = Preference.fetchRequest()
-        do {
-            preferenceArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-    }
-    
-    func save() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
         }
     }
     

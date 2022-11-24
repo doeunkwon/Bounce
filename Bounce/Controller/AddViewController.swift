@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import CoreData
 
 class AddViewController: UIViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let coreDataManager = CoreDataManager()
     
     @IBOutlet weak var eventTextField: UITextField!
     @IBOutlet weak var timeLabel: UILabel!
@@ -45,11 +44,11 @@ class AddViewController: UIViewController {
     @IBAction func addPressed(_ sender: Any) {
         if let eventInput = eventTextField.text {
             if eventInput != "" {
-                let newEvent = Event(context: context)
+                let newEvent = Event(context: coreDataManager.context)
                 newEvent.event = eventInput
                 newEvent.time = Int32(timeValue)
                 newEvent.day = Int32(dayValue)
-                save()
+                coreDataManager.save()
                 navigationController?.popViewController(animated: true)
                 dismiss(animated: true, completion: nil)
             } else {
@@ -71,14 +70,6 @@ class AddViewController: UIViewController {
             dayLabel.text = "late"
         default:
             dayLabel.text = "noon"
-        }
-    }
-    
-    func save() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
         }
     }
     

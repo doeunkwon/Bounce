@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import CoreData
 import CoreLocation
 
 class ViewController: UIViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let coreDataManager = CoreDataManager()
     
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,7 +28,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadPreference()
+        coreDataManager.loadPreference(&preferenceArray)
         
         /// find a way to only call this function when nickname has been changed
         if preferenceArray.count == 1 { // "if preference is set"
@@ -43,7 +42,7 @@ class ViewController: UIViewController {
         /// uncomment for path to Bounce.sqlite
         print("--- \(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))")
         
-        loadPreference()
+        coreDataManager.loadPreference(&preferenceArray)
         
         let date = Date()
         let calendar = Calendar.current
@@ -71,37 +70,19 @@ class ViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 26.0)]
     
-        blueButton.setAttributedTitle(NSAttributedString(string: "Schedule", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
-        blueButton.layer.shadowOpacity = 0.1
-        blueButton.layer.shadowRadius = 3.0
-        blueButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        
-        greenButton.setAttributedTitle(NSAttributedString(string: "Add", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
-        greenButton.layer.shadowOpacity = 0.1
-        greenButton.layer.shadowRadius = 3.0
-        greenButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        
-        orangeButton.setAttributedTitle(NSAttributedString(string: "Set", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
-        orangeButton.layer.shadowOpacity = 0.1
-        orangeButton.layer.shadowRadius = 3.0
-        orangeButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        
-        redButton.setAttributedTitle(NSAttributedString(string: "Library", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
-        redButton.layer.shadowOpacity = 0.1
-        redButton.layer.shadowRadius = 3.0
-        redButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        styleButton(blueButton, "Schedule")
+        styleButton(greenButton, "Add")
+        styleButton(orangeButton, "Set")
+        styleButton(redButton, "Library")
     }
     
-    func loadPreference() {
-        let request : NSFetchRequest<Preference> = Preference.fetchRequest()
-        do {
-            preferenceArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
+    func styleButton(_ button: UIButton, _ title: String) {
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 26.0)]
+        button.setAttributedTitle(NSAttributedString(string: title, attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
+        button.layer.shadowOpacity = 0.1
+        button.layer.shadowRadius = 3.0
+        button.layer.shadowOffset = CGSize(width: 0, height: 1)
     }
     
 }

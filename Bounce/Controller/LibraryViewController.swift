@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import CoreData
 
 class LibraryViewController: UIViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let coreDataManager = CoreDataManager()
     
     @IBOutlet weak var eventTableView: UITableView!
     
@@ -19,7 +18,7 @@ class LibraryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadEvents()
+        coreDataManager.loadEvents(&eventArray)
         
         eventTableView.delegate = self
         eventTableView.dataSource = self
@@ -27,23 +26,6 @@ class LibraryViewController: UIViewController {
         
         eventArray.sort { $0.event! < $1.event!}
         
-    }
-    
-    func loadEvents() {
-        let request : NSFetchRequest<Event> = Event.fetchRequest()
-        do {
-            eventArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-    }
-    
-    func save() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
-        }
     }
     
 }
@@ -54,9 +36,9 @@ class LibraryViewController: UIViewController {
 extension LibraryViewController: UITableViewDelegate {
     
     private func handleMoveToDelete(_ tableView: UITableView, _ indexPath: IndexPath) {
-        context.delete(eventArray[indexPath.row])
+        coreDataManager.delete(eventArray[indexPath.row])
         eventArray.remove(at: indexPath.row)
-        save()
+        coreDataManager.save()
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }

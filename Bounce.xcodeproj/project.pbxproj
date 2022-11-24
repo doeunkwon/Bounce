@@ -22,6 +22,7 @@
 		E477FC982926074800883CF4 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E477FC972926074800883CF4 /* EventCell.xib */; };
 		E477FC9A29260C2600883CF4 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477FC9929260C2600883CF4 /* EventCell.swift */; };
 		E487E3DA28E827ED0016F386 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E487E3D928E827ED0016F386 /* SetViewController.swift */; };
+		E4A87C5C292FEE8900CA09CD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A87C5B292FEE8900CA09CD /* CoreDataManager.swift */; };
 		E4C429E728EA38E10057CEBA /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C429E628EA38E10057CEBA /* LibraryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		E477FC972926074800883CF4 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		E477FC9929260C2600883CF4 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		E487E3D928E827ED0016F386 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
+		E4A87C5B292FEE8900CA09CD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E4C429E628EA38E10057CEBA /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 				E487E3D928E827ED0016F386 /* SetViewController.swift */,
 				E4C429E628EA38E10057CEBA /* LibraryViewController.swift */,
 				E41314A228F13FDC00AB0171 /* ScheduleViewController.swift */,
+				E4A87C5B292FEE8900CA09CD /* CoreDataManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				E477FC9A29260C2600883CF4 /* EventCell.swift in Sources */,
 				E40D74452920D4C200BA11D9 /* WeatherModel.swift in Sources */,
 				E40D74472920D4CE00BA11D9 /* WeatherData.swift in Sources */,
+				E4A87C5C292FEE8900CA09CD /* CoreDataManager.swift in Sources */,
 				E460909F28E78F7000BCB5F3 /* AppDelegate.swift in Sources */,
 				E4C429E728EA38E10057CEBA /* LibraryViewController.swift in Sources */,
 				E40D74432920D4B600BA11D9 /* WeatherManager.swift in Sources */,

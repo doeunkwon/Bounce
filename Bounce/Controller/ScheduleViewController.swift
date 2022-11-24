@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import CoreData
 
 class ScheduleViewController: UIViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let coreDataManager = CoreDataManager()
     
     @IBOutlet weak var scheduleTableView: UITableView!
     
@@ -24,9 +23,9 @@ class ScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadEvents()
-        loadSchedule()
-        loadPreference()
+        coreDataManager.loadSchedule(&scheduleArray)
+        coreDataManager.loadPreference(&preferenceArray)
+        coreDataManager.loadEvents(&eventArray)
         
         scheduleTableView.dataSource = self
         
@@ -57,15 +56,15 @@ class ScheduleViewController: UIViewController {
         }
 
         /// uncomment for testing
-        startingTime = 6
+        startingTime = 11
         newDay = true
         
         if newDay {
             for schedule in scheduleArray {
-                context.delete(schedule)
+                coreDataManager.delete(schedule)
             }
             scheduleArray = []
-            save()
+            coreDataManager.save()
             
             generateSchedule()
             addBedtime()
@@ -83,30 +82,32 @@ class ScheduleViewController: UIViewController {
         let late = eventArray.filter { event in
             return event.day == 2
         }
+        
+        /// early is 1am - 10am, noon is 11am - 4pm, late is 5pm - 11pm
         let phaseArray = [early, noon, late]
         
         for i in 0 ... 2 {
             var rem = 0
             if i == 0 {
-                rem += 12
-            } else if i == 1{
+                rem += 10
+            } else if i == 1 {
                 rem += 6
-                clock = 12
+                clock = 11
             } else {
-                rem += 6
-                clock = 18
+                rem += 8
+                clock = 17
                 if preferenceArray.count > 0 {
-                    rem = Int(preferenceArray[0].bed - 18)
+                    rem = Int(preferenceArray[0].bed - 17)
                 }
             }
-            updateStartingTime(&rem)
+            updateTime(&rem)
             let phase = phaseArray[i].shuffled()
             
             for event in phase {
                 if rem <= 0 {
                     break
                 }
-                if event.time < rem {
+                if event.time <= rem {
                     rem -= Int(event.time)
                     addToSchedule(event)
                 }
@@ -114,7 +115,7 @@ class ScheduleViewController: UIViewController {
         }
     }
     
-    func updateStartingTime(_ rem: inout Int) {
+    func updateTime(_ rem: inout Int) {
         if startingTime > 0 {
             clock += startingTime
             let temp = rem
@@ -124,60 +125,25 @@ class ScheduleViewController: UIViewController {
     }
     
     func addToSchedule(_ event: Event) {
-        let newSchedule = Schedule(context: context)
+        let newSchedule = Schedule(context: coreDataManager.context)
         newSchedule.event = event.event
         newSchedule.time = event.time
         newSchedule.origin = Date()
         newSchedule.clock = Int32(clock)
-        save()
+        coreDataManager.save()
         scheduleArray.append(newSchedule)
         clock = clock + Int(event.time)
     }
     
     func addBedtime() {
         if preferenceArray.count > 0 {
-            let newSchedule = Schedule(context: context)
+            let newSchedule = Schedule(context: coreDataManager.context)
             newSchedule.event = "bed 🛏️"
             newSchedule.time = preferenceArray[0].sleep
             newSchedule.origin = Date()
             newSchedule.clock = preferenceArray[0].bed
-            save()
+            coreDataManager.save()
             self.scheduleArray.append(newSchedule)
-        }
-    }
-    
-    func loadSchedule() {
-        let request : NSFetchRequest<Schedule> = Schedule.fetchRequest()
-        do {
-            scheduleArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-    }
-    
-    func loadPreference() {
-        let request : NSFetchRequest<Preference> = Preference.fetchRequest()
-        do {
-            preferenceArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-    }
-    
-    func loadEvents() {
-        let request : NSFetchRequest<Event> = Event.fetchRequest()
-        do {
-            eventArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-    }
-    
-    func save() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
         }
     }
 }
