@@ -10,6 +10,7 @@ import UIKit
 class AddViewController: UIViewController {
     
     let coreDataManager = CoreDataManager()
+    let styleManager = StyleManager()
     
     @IBOutlet weak var eventTextField: UITextField!
     @IBOutlet weak var timeLabel: UILabel!
@@ -18,17 +19,12 @@ class AddViewController: UIViewController {
     @IBOutlet weak var daySlider: UISlider!
     @IBOutlet weak var addButton: UIButton!
     
-    
     var timeValue = 3
     var dayValue = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 25.0)]
-    
-        addButton.setAttributedTitle(NSAttributedString(string: "Add", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
-        
+        styleManager.styleTextButton(addButton, "Add")
     }
     
     @IBAction func timeSlid(_ sender: UISlider) {
@@ -52,7 +48,6 @@ class AddViewController: UIViewController {
                 navigationController?.popViewController(animated: true)
                 dismiss(animated: true, completion: nil)
             } else {
-                
                 let alert = UIAlertController(title: "Hold on!", message: "Please enter an event.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Sure", style: .default, handler: nil))
                 present(alert, animated: true)

@@ -10,6 +10,7 @@ import UIKit
 class SetViewController: UIViewController {
     
     let coreDataManager = CoreDataManager()
+    let styleManager = StyleManager()
     
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var sleepLabel: UILabel!
@@ -27,12 +28,9 @@ class SetViewController: UIViewController {
         super.viewDidLoad()
         
         coreDataManager.loadPreference(&preferenceArray)
+        styleManager.styleTextButton(setButton, "Set")
         
         nicknameTextField.delegate = self
-        
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "ArialRoundedMTBold", size: 25.0)]
-        
-        setButton.setAttributedTitle(NSAttributedString(string: "Set", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
         
         if preferenceArray.count == 1 { // "if preference is set"
             nicknameTextField.text = preferenceArray[0].nickname

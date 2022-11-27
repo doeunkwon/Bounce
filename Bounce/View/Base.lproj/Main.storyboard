@@ -84,6 +84,7 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Button"/>
                                             </attributedString>
+                                            <color key="baseForegroundColor" name="warmWhite"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="uhW-Qm-DIk" kind="show" id="N52-yw-I8k"/>
@@ -94,7 +95,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="lightRed"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Button" cornerStyle="medium"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Button" cornerStyle="medium">
+                                            <color key="baseForegroundColor" name="warmWhite"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <segue destination="5pM-QY-3zA" kind="show" id="Nzs-Oh-sIK"/>
                                         </connections>
@@ -107,7 +110,9 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" name="lightOrange"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button" cornerStyle="medium"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Button" cornerStyle="medium">
+                                                    <color key="baseForegroundColor" name="warmWhite"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <segue destination="Kzi-FP-uEs" kind="show" id="fhI-Bz-tEY"/>
                                                 </connections>
@@ -117,7 +122,9 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" name="lightGreen"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button" cornerStyle="medium"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Button" cornerStyle="medium">
+                                                    <color key="baseForegroundColor" name="warmWhite"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <segue destination="wAg-jl-vtE" kind="show" id="gqY-Fg-aci"/>
                                                 </connections>
@@ -165,7 +172,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="99y-oa-dVL" secondAttribute="trailing" constant="16" id="mPw-37-Jpu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="p1I-ht-jxh"/>
+                    <navigationItem key="navigationItem" id="p1I-ht-jxh">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Wf7-7m-QCF"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="blueButton" destination="hoo-YA-WUo" id="sOc-E6-4y3"/>
                         <outlet property="greenButton" destination="STZ-Q4-OvR" id="Z3N-Ka-mJp"/>
@@ -525,6 +534,7 @@
             <point key="canvasLocation" x="53.623188405797109" y="-823.66071428571422"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="lightBlack"/>
     <resources>
         <namedColor name="lightBlack">
             <color red="0.10588235294117647" green="0.14117647058823529" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

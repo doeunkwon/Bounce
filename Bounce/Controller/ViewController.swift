@@ -34,6 +34,11 @@ class ViewController: UIViewController {
         if preferenceArray.count == 1 { // "if preference is set"
             nameLabel.text = preferenceArray[0].nickname
         }
+        
+        let iconBack = UIImage(named: "iconBack")
+        navigationController?.navigationBar.backIndicatorImage = iconBack
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = iconBack
+        navigationItem.leftItemsSupplementBackButton = true
     }
     
     override func viewDidLoad() {
@@ -71,10 +76,11 @@ class ViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     
-        styleManager.styleButton(blueButton, "Schedule")
-        styleManager.styleButton(greenButton, "Add")
-        styleManager.styleButton(orangeButton, "Set")
-        styleManager.styleButton(redButton, "Library")
+        styleManager.styleRoundButton(blueButton, "Schedule")
+        styleManager.styleRoundButton(greenButton, "Add")
+        styleManager.styleRoundButton(orangeButton, "Set")
+        styleManager.styleRoundButton(redButton, "Library")
+        
     }
     
 }

@@ -96,9 +96,10 @@
 		E46090B528E821A600BCB5F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E46090A428E78F7000BCB5F3 /* Main.storyboard */,
 				E477FC972926074800883CF4 /* EventCell.xib */,
 				E477FC9929260C2600883CF4 /* EventCell.swift */,
+				E46090A428E78F7000BCB5F3 /* Main.storyboard */,
+				E4A87C61292FF9FE00CA09CD /* StyleManager.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -107,9 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				E4A87C5B292FEE8900CA09CD /* CoreDataManager.swift */,
+				E40D74462920D4CE00BA11D9 /* WeatherData.swift */,
 				E40D74422920D4B600BA11D9 /* WeatherManager.swift */,
 				E40D74442920D4C200BA11D9 /* WeatherModel.swift */,
-				E40D74462920D4CE00BA11D9 /* WeatherData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,12 +118,11 @@
 		E46090B728E821B300BCB5F3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E46090A228E78F7000BCB5F3 /* ViewController.swift */,
 				E46090B828E822DA00BCB5F3 /* AddViewController.swift */,
-				E487E3D928E827ED0016F386 /* SetViewController.swift */,
 				E4C429E628EA38E10057CEBA /* LibraryViewController.swift */,
 				E41314A228F13FDC00AB0171 /* ScheduleViewController.swift */,
-				E4A87C61292FF9FE00CA09CD /* StyleManager.swift */,
+				E487E3D928E827ED0016F386 /* SetViewController.swift */,
+				E46090A228E78F7000BCB5F3 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
