@@ -17,7 +17,7 @@ Bounce is intended to be a fun app more than anything else. This idea struck me 
 ### More growth!
 Adding onto the fact that it's fun, I'm a believer in that we grow through experience. But I noticed that many people have a tendency to not take initiative in trying new things. Bounce is an attempt to encourage new experiences. The idea is that most people have the time to try the things that they want to try, but they just don't know how to make the time.
 
-Bounce sets up the experience for you. All you have to do is live it.
+**Bounce sets up the experience for you. All you have to do is live it.**
 
 ## Future Considerations
 
