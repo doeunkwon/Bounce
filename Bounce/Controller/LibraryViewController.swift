@@ -24,7 +24,7 @@ class LibraryViewController: UIViewController {
         eventTableView.dataSource = self
         eventTableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "reusableCell")
         
-        eventArray.sort { $0.event! < $1.event!}
+        eventArray.sort { $0.day < $1.day}
         
     }
     
