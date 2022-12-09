@@ -19,6 +19,12 @@ Adding onto the fact that it's fun, I'm a believer in that we grow through exper
 
 **Bounce sets up the experience for you. All you have to do is live it.**
 
+<br><br>
+<p align="center">
+  <img width="800" src="https://user-images.githubusercontent.com/88988886/206617311-bfdf14e1-4037-4383-a9ce-ff70d5fd2729.png">
+</p>
+<br><br>
+
 ## Future Considerations
 
 ### Queue
