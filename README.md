@@ -31,10 +31,10 @@ Adding onto the fact that it's fun, I'm a believer in that we grow through exper
 
 These are the features that I'd like to add:
 
-1. Pinned events
+1. Allow pinned events
    - Pin specific events in the library page so that they show up on every schedule
    - ex) going to school on the weekdays
-2. Sorting options for the Library page
+2. Add sorting options for the Library page
    - Include an add button for the library page so that users don't have to navigate all the way back to the Add page
    - Provide sorting options by event name, duration, and daytime
 3. Improve scheduling algorithm
@@ -42,5 +42,6 @@ These are the features that I'd like to add:
    - ex) if the only afternoon event in the library is "running", it will always show up at 12pm
    - Edit the algorithm so that even if "running" is the only afternoon event, it may still show up anytime between 12pm and 5pm (which is range for the afternoon phase)
 4. Fix `placeLabel` bug
-   - When a user first sets his/her preference, the location/weather label doesn't behave correctly
-   - Once the user force refreshes the app, the label behaves appropriately
+   - When a user first sets his/her preference, the location/weather label doesn't update correctly
+   - Instead, it's still labelled as "Go get set up!" even though the user has already set up
+   - Once the user force refreshes the app, the label behaves appropriately and updates the location and weather
