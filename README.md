@@ -7,41 +7,20 @@
 
 ## Description
 
-Bounce is an iOS app that randomizes your day based on your inputs. Users can get started by entering in a few things that they'd typically do in the mornings, afternoons, and evenings, as well as setting up their sleeping preferences. Bounce then takes a handful of these events to create a personalized, yet random, schedule for the day. 
+Bounce is an iOS app designed to add spontaneity to your day. Users input typical morning, afternoon, and evening activities, along with their sleep preferences. Bounce then curates a unique yet randomized daily schedule from these entries.
 
 ## Why?
 
 ### It's fun.
-Bounce is intended to be a fun app more than anything else. This idea struck me when COVID-19 first hit and I found myself repeating my days during quarantine. Things quickly became bland. I enjoy spontaneity and the element of surprise. I think it's very fun leaving the fate of your day in the hands of an algorithm.
+Bounce was born out of the monotony I felt during the early days of the COVID-19 quarantine. Day after day, routines became repetitive, and life felt stale. I've always relished spontaneity and the thrill of the unexpected. The idea of entrusting the course of your day to an algorithm, to bring in that element of surprise, just seemed irresistibly fun.
 
 ### More growth!
-Adding onto the fact that it's fun, I'm a believer in that we grow through experience. But I noticed that many people have a tendency to not take initiative in trying new things. Bounce is an attempt to encourage new experiences. The idea is that most people have the time to try the things that they want to try, but they just don't know how to make the time.
+Beyond the sheer fun of it, I deeply believe that we evolve through experiences. However, I've observed that many often hesitate to step out of their comfort zones and embark on new adventures. Bounce aims to bridge that gap. The underlying philosophy is that most people do have the time for novel experiences; they just need a nudge in figuring out how to carve out that time. Bounce provides that playful push towards exploration and growth.
 
-**Bounce sets up the experience for you. All you have to do is live it.**
+**Bounce lays out the adventure; all you have to do is live it.**
 
 <br>
 <p align="center">
   <img width="800" src="https://user-images.githubusercontent.com/88988886/206617311-bfdf14e1-4037-4383-a9ce-ff70d5fd2729.png">
 </p>
 <br>
-
-## Future Considerations
-
-### Queue
-
-These are the features that I'd like to add:
-
-1. Allow pinned events
-   - Pin specific events in the library page so that they show up on every schedule
-   - ex) going to school on the weekdays
-2. Add sorting options for the Library page
-   - Include an add button for the library page so that users don't have to navigate all the way back to the Add page
-   - Provide sorting options by event name, duration, and daytime
-3. Improve scheduling algorithm
-   - Currently, the scheduling algorithm slots in events consecutively either in the morning, afternoon, or evening phase
-   - ex) if the only afternoon event in the library is "running", it will always show up at 12pm
-   - Edit the algorithm so that even if "running" is the only afternoon event, it may still show up anytime between 12pm and 5pm (which is range for the afternoon phase)
-4. Fix `placeLabel` bug
-   - When a user first sets his/her preference, the location/weather label doesn't update correctly
-   - Instead, it's still labelled as "Go get set up!" even though the user has already set up
-   - Once the user force refreshes the app, the label behaves appropriately and updates the location and weather
